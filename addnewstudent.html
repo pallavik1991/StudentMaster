@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add New Student</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#btnadd").click(function(){
+
+				var fname=document.getElementById("txtfirstname").value;
+				var mname=document.getElementById("txtmiddlename").value;
+				var lname=document.getElementById("txtlastname").value;
+				var nameoncerti=document.getElementById("txtname").value;
+				var gender=document.getElementById("rdbgender").value;
+				var dob=document.getElementById("txtdob").value;
+				var address=document.getElementById("txtaddress").value;
+				var specialchild=document.getElementById("rdbspecialchild").value;
+				var cerificatesubmitted=document.getElementById("rdbcertificatesubmitted").value;
+				var religion=document.getElementById("ddlreligion").value;
+				var caste=document.getElementById("txtcaste").value;
+				var subcaste=document.getElementById("txtsubcaste").value;
+				var category=document.getElementById("ddlcategory").value;
+				var fathername=document.getElementById("txtfather").value;
+				var mothername=document.getElementById("txtmother").value;
+				var mobileno=document.getElementById("txtmobile").value;
+				var alternateno=document.getElementById("txtalternate").value;
+				var studentadhaar=document.getElementById("txtstudentadhaar").value;
+				var fatheradhaar=document.getElementById("txtfatheradhaar").value;
+				var motheradhaar=document.getElementById("txtmotheradhaar").value;
+				var rationcard=document.getElementById("txtration").value;
+				var emailid=document.getElementById("txtemail").value;
+				var fromanotherschool=document.getElementById("rdbanother").value;
+				var schoolname=document.getElementById("txtschoolname").value;
+				var schooladdress=document.getElementById("txtschooladdress").value;
+				var yearofpassing=document.getElementById("txtyearofpassing").value;
+				var incomecertificate_no=document.getElementById("txtincomecertificate_no").value;
+				var castecertificate_no=document.getElementById("txtcastecertificate_no").value;
+				//var photo="upload/".$_FILES['filephoto']['name'];
+
+				/*$sourcePath = $_FILES['filephoto']['tmp_name']; // Storing source path of the file in a variable
+        		$targetPath = "upload/".$_FILES['filephoto']['name']; // Target path where file is to be stored
+        		move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
+				*/
+
+			     $.ajax({
+			      type: "POST",
+			      url: 'dal_addnewstudent.php',
+			      data: ({
+			      	param_fname:fname,
+			      	param_mname:mname,
+			      	param_lname:lname,
+			      	param_nameoncerti:nameoncerti,
+			      	param_gender:gender,
+			      	param_dob:dob,
+			      	param_address:address,
+			      	param_specialchild:specialchild,
+			      	param_certificatesubmitted:cerificatesubmitted,
+			      	param_religion:religion,
+			      	param_caste:caste,
+			      	param_subcaste:subcaste,
+			      	param_category:category,
+			      	param_fathername:fathername,
+			      	param_mothername:mothername,
+			      	param_mobileno:mobileno,
+			      	param_alternateno:alternateno,
+			      	param_studentadhaar:studentadhaar,
+			      	param_fatheradhaar:fatheradhaar,
+			      	param_motheradhaar:motheradhaar,
+			      	param_ration:rationcard,
+			      	param_email:emailid,
+			      	param_fromanotherschool:fromanotherschool,
+			      	param_schoolname:schoolname,
+			      	param_schooladdress:schooladdress,
+			      	param_yearofpassing:yearofpassing,
+			      	param_incomecertificate_no:incomecertificate_no,
+			      	param_castecertificate_no:castecertificate_no
+			      }),
+			      success: function(data) {
+			       //document.getElementById("div1").innerHTML=data;
+			        var row='<h3><a href=uploadimage.html?param='+data+'>Upload Student Photo Here</a></h3>';
+			        $('#div1').after(row);
+			      
+			      } 
+			    }); 
+			    });   
+		});
+
+		
+
+	</script>
+</head>
+<body>
+	<center><h1>Add New Student</h1></center>
+	<form method="POST" id="uploadimage">
+		
+		<table border="1" align="center">
+
+			 <tr>
+				<td>First Name</td>
+				<td><input type="text" name="txtfirstname" id="txtfirstname" autofocus="true" />
+			</tr>
+			
+			 <tr>
+				<td>Middle Name</td>
+				<td><input type="text" name="txtmiddlename" id="txtmiddlename"/>
+			</tr>
+			
+			 <tr>
+				<td>Last Name</td>
+				<td><input type="text" name="txtlastname" id="txtlastname"/>
+					
+			</tr>
+			
+			 <tr>
+				<td>Name On Certificate</td>
+				<td><input type="text" name="txtname" id="txtname"/>
+			</tr>
+
+			 <tr>
+				<td>Gender</td>
+				<td><input type="radio" name="rdbgender" id="rdbgender" value="F" checked/>Female
+					<input type="radio" name="rdbgender" id="rdbgender" value="M" />Male
+			</tr>
+
+			<tr>
+				<td>Date Of Birth</td>
+				<td><input type="date" name="txtdob" id="txtdob"/>
+			</tr>
+
+			<tr>
+				<td>Address</td>
+				<td><textarea name="txtaddress" id="txtaddress"></textarea></td>
+			</tr>
+
+			<tr>
+				<td>Special Child</td>
+				<td><input type="radio" name="rdbspecialchild" id="rdbspecialchild" value="Y" checked />Yes
+					<input type="radio" name="rdbspecialchild" id="rdbspecialchild" value="N" />No
+				</td>
+			</tr>
+
+			<tr>
+				<td>Certificate Submitted</td>
+				<td><input type="radio" name="rdbcertificatesubmitted" id="rdbcertificatesubmitted" value="Y" checked />Yes
+					<input type="radio" name="rdbcertificatesubmitted" id="rdbcertificatesubmitted" value="N" />No
+				</td>
+			</tr>
+
+			<tr>
+				<td>Religion</td>
+				<td>
+					<select name="ddlreligion" id="ddlreligion">
+						<option>Hindu</option>
+						<option>Muslim</option>
+						<option>Christian</option>
+						<option>Jain</option>
+						<option>Sikh</option>
+						<option></option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Caste</td>
+				<td><input type="text" name="txtcaste" id="txtcaste"/>
+			</tr>
+
+			<tr>
+				<td>Subcaste</td>
+				<td><input type="text" name="txtsubcaste" id="txtsubcaste"/>
+			</tr>
+
+			<tr>
+				<td>Category</td>
+				<td>
+					<select name="ddlcategory" id="ddlcategory">
+						<option>GM</option>
+						<option>2A</option>
+						<option>2B</option>
+						<option>SC</option>
+						<option>ST</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Father Name</td>
+				<td><input type="text" name="txtfather" id="txtfather"/>
+			</tr>
+
+			<tr>
+				<td>Mother Name</td>
+				<td><input type="text" name="txtmother" id="txtmother"/>
+			</tr>
+
+			<tr>
+				<td>Mobile Number</td>
+				<td><input type="number" name="txtmobile" id="txtmobile"/>
+			</tr>
+
+			<tr>
+				<td>Alternate Mobile Number</td>
+				<td><input type="number" name="txtalternate" id="txtalternate"/>
+			</tr>
+
+			<tr>
+				<td>Student Adhaar Number</td>
+				<td><input type="text" name="txtstudentadhaar" id="txtstudentadhaar"/>
+			</tr>
+
+			<tr>
+				<td>Father Adhaar Number</td>
+				<td><input type="text" name="txtfatheradhaar" id="txtfatheradhaar"/>
+			</tr>
+
+			<tr>
+				<td>Mother Adhaar Number</td>
+				<td><input type="text" name="txtmotheradhaar" id="txtmotheradhaar"/>
+			</tr>
+
+			<tr>
+				<td>Ration Card Number</td>
+				<td><input type="text" name="txtration" id="txtration"/>
+			</tr>
+
+			<tr>
+				<td>Emailid</td>
+				<td><input type="text" name="txtemail" id="txtemail"/>
+			</tr>
+
+			<tr>
+				<td>From Another School?</td>
+				<td><input type="radio" name="rdbanother" id="rdbanother" value="Y" checked />Yes
+					<input type="radio" name="rdbanother" id="rdbanother" value="N" />No
+			</tr>
+
+			<tr>
+				<td>School Name</td>
+				<td><input type="text" name="txtschoolname" id="txtschoolname"/>
+			</tr>
+
+			<tr>
+				<td>School Address</td>
+				<td><textarea name="txtschooladdress" id="txtschooladdress"></textarea></td>
+			</tr>
+			<tr>
+				<td>Year of Passing</td>
+				<td><input type="text" name="txtyearofpassing" id="txtyearofpassing"/>
+			</tr>
+			<tr>
+				<td>Income Certificate Number</td>
+				<td><input type="text" name="txtincomecertificate_no" id="txtincomecertificate_no"/>
+			</tr>
+			
+			<tr>
+				<td>Caste Certificate Number</td>
+				<td><input type="text" name="txtcastecertificate_no" id="txtcastecertificate_no"/>
+			</tr>
+			
+			
+
+			<tr>
+				<td><input type="button" name="btnadd" id="btnadd" value="submit" />
+			</tr>
+		</table>
+	</form>
+	<br>
+	<center><font color="red"><div id="div1">
+	</div></font></center>
+
+
+</body>
+</html>

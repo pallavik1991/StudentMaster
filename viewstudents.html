@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Students' List</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+	
+</head>
+<body>
+
+	<form method="GET">
+		<center><h1>Students List</h1></center>
+		<table border="1" id="table_students" align="center">
+			<thead>
+				<tr>
+					<th>Student USN</th>
+					<th>FirstName</th>
+					<th>MiddleName</th>
+					<th>LastName</th>
+					<th>Gender</th>
+					<th>BirthDate</th>
+					<th>Address</th>
+					<th>Special Child</th>
+					<th>Certificate Submitted</th>
+					<th>Religion</th>
+					<th>Caste</th>
+					<th>Subcaste</th>
+					<th>Category</th>
+					<th>Father Name</th>
+					<th>Mother Name</th>
+					<th>Mobilenumber</th>
+					<th>Alternate Number</th>
+					<th>Student Adhaar</th>
+					<th>Father Adhaar</th>
+					<th>Mother Adhaar</th>
+					<th>Ration Cardno</th>
+					<th>Emailid</th>
+					<th>Income Certificate number</th>
+					<th>Caste Certificate number</th>
+					
+				</tr>
+			</thead>
+		
+		</table>
+		
+	
+	</form>
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+			     $.ajax({
+			     
+			      url: 'dal_viewstudent.php',
+			      datatype: 'json',
+			        success: function(data)          //on recieve of reply
+      				{
+      					result=JSON.parse(data);
+      					var table_students=document.getElementById("table_students");
+      					for(var i=0;i<result.length; i++)
+      					{
+      						var usn=result[i].student_usn;
+      						var firstname=result[i].firstname;
+      						var middlename=result[i].middlename;
+      						var lastname=result[i].lastname;
+      						var gender=result[i].gender;
+      						var dob=result[i].dob;
+      						var address=result[i].address;
+      						var specialchild=result[i].specialchild;
+                                          var certificatesubmitted=result[i].certificatesubmitted;
+                                          var religion=result[i].religion;
+      						var caste=result[i].caste;
+      						var subcaste=result[i].subcaste;
+      						var category=result[i].category;
+      						var fathername=result[i].fathername;
+      						var mothername=result[i].mothername;
+      						var mobile=result[i].mobileno;
+      						var alternateno=result[i].alternateno;
+      						var studentadhaar=result[i].studentadhaar;
+      						var fatheradhaar=result[i].fatheradhaar;
+      						var motheradhaar=result[i].motheradhaar;
+      						var ration=result[i].rationcard;
+      						var emailid=result[i].emailid;
+      						var incomecertificateno=result[i].incomecertificateno;
+      						var castecertificateno=result[i].castecertificateno;
+
+
+      						usn='<td>'+usn+'</td>';
+      						
+      						firstname='<td>'+firstname+'</td>';
+      						middlename='<td>'+middlename+'</td>';
+      						lastname='<td>'+lastname+'</td>';
+      						gender='<td>'+gender+'</td>';
+      						dob='<td>'+dob+'</td>';
+      						address='<td>'+address+'</td>';
+      						specialchild='<td>'+specialchild+'</td>';
+      						certificatesubmitted='<td>'+certificatesubmitted+'</td>';
+      						religion='<td>'+religion+'</td>';
+      						caste='<td>'+caste+'</td>';
+      						subcaste='<td>'+subcaste+'</td>';
+      						category='<td>'+category+'</td>';
+      						fathername='<td>'+fathername+'</td>';
+      						mothername='<td>'+mothername+'</td>';
+      						mobile='<td>'+mobile+'</td>';
+      						alternateno='<td>'+alternateno+'</td>';
+      						studentadhaar='<td>'+studentadhaar+'</td>';
+      						fatheradhaar='<td>'+fatheradhaar+'</td>';
+      						motheradhaar='<td>'+motheradhaar+'</td>';
+      						ration='<td>'+ration+'</td>';
+      						emailid='<td>'+emailid+'</td>';
+      						incomecertificateno='<td>'+incomecertificateno+'</td>';
+      						castecertificateno='<td>'+castecertificateno+'</td>';
+
+      						var row='<tr>'+usn+firstname+middlename+lastname+gender+dob+address+specialchild+certificatesubmitted+religion+caste+subcaste+category+fathername+mothername+mobile+alternateno+studentadhaar+fatheradhaar+motheradhaar+ration+emailid+incomecertificateno+castecertificateno+'</tr>';
+      						$('#table_students tr:last').after(row);
+      					}
+
+		 			}	
+		 			
+			     
+			});
+			 });
+	</script>
+</body>
+</html>
